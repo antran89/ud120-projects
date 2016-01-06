@@ -1,1 +1,1 @@
-This is example codes in lectures of Udacity course [Introduction to Machine Learning]() 
+This is example codes in lectures of Udacity course [Introduction to Machine Learning](https://www.udacity.com/course/viewer#!/c-ud120).
