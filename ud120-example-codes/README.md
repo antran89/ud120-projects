@@ -1,0 +1,1 @@
+This is example codes in lectures of Udacity course [Introduction to Machine Learning]() 
