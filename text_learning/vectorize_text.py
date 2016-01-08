@@ -5,7 +5,7 @@ import pickle
 import re
 import sys
 
-sys.path.append( "../tools/" )
+sys.path.append("../tools/")
 from parse_out_email_text import parseOutText
 
 """
@@ -22,8 +22,7 @@ from parse_out_email_text import parseOutText
     The data is stored in lists and packed away in pickle files at the end.
 """
 
-
-from_sara  = open("from_sara.txt", "r")
+from_sara = open("from_sara.txt", "r")
 from_chris = open("from_chris.txt", "r")
 
 from_data = []
@@ -35,7 +34,6 @@ word_data = []
 ### temp_counter helps you only look at the first 200 emails in the list so you
 ### can iterate your modifications quicker
 temp_counter = 0
-
 
 for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
@@ -56,6 +54,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             text = text.replace("shackleton", "")
             text = text.replace("chris", "")
             text = text.replace("germani", "")
+            text = text.replace("sshacklensf", "")
+            text = text.replace("cgermannsf", "")
 
             ### append the text to word_data
             word_data.append(text)
@@ -74,15 +74,12 @@ from_chris.close()
 
 print word_data[152]
 
-pickle.dump( word_data, open("your_word_data.pkl", "w") )
-pickle.dump( from_data, open("your_email_authors.pkl", "w") )
-
-
-
-
+pickle.dump(word_data, open("your_word_data.pkl", "w"))
+pickle.dump(from_data, open("your_email_authors.pkl", "w"))
 
 ### in Part 4, do TfIdf vectorization here
 from sklearn.feature_extraction.text import TfidfVectorizer
+
 vectorizer = TfidfVectorizer(stop_words='english')
 vectorizer.fit(word_data)
 voc_list = vectorizer.get_feature_names()
