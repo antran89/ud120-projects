@@ -33,7 +33,7 @@ plt.show()
 from sklearn import ensemble
 from sklearn.metrics import accuracy_score
 
-clf = ensemble.AdaBoostClassifier(n_estimators=15)
+clf = ensemble.AdaBoostClassifier(n_estimators=15, random_state=42)
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 acc = accuracy_score(labels_test, pred)
@@ -43,3 +43,15 @@ try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+
+clf = ensemble.RandomForestClassifier(random_state=42)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+acc = accuracy_score(labels_test, pred)
+print 'Accuracy of Random Forest: %f' % acc
+
+clf = ensemble.GradientBoostingClassifier(learning_rate=1, max_depth=8, random_state=42)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+acc = accuracy_score(labels_test, pred)
+print 'Accuracy of Gradient Boosting: %f' % acc
